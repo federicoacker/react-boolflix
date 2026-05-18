@@ -1,20 +1,21 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import PrimaryLayout from "./components/layout/PrimaryLayout";
-import Home from "./components/pages/Home";
-import NotFound from "./components/pages/NotFound";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import { MovieProvider } from "./contexts/MovieContext";
 
 function App() {
   return (
-    <>
-    <BrowserRouter>
-      <Routes>
-        <Route Component={PrimaryLayout}>
-          <Route path="/" Component={Home}/>
-          <Route path="*" Component={NotFound}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    </>
+    <MovieProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route Component={PrimaryLayout}>
+            <Route path="/" Component={Home} />
+            <Route path="*" Component={NotFound} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </MovieProvider>
   );
 }
 export default App;

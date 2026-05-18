@@ -3,8 +3,8 @@ import { MovieContext } from "../contexts/MovieContext";
 
 function useMovie(){
     const movieValues = useContext(MovieContext);
-    if(movieValues){
-        throw new Error("Hai dimenticato di wrappare MovieProvider attorno all'APP");
+    if(!movieValues){
+        console.error("Hai dimenticato di wrappare MovieProvider attorno all'APP");
     }
     return movieValues
 }

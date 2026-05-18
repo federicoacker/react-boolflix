@@ -1,20 +1,11 @@
-import { useState } from "react";
-import useSearch from "../../hooks/useSearch.js";
-import useDebounce from "../../hooks/useDebounce.js";
+import useMovie from "../../hooks/useMovie"
+
 
 function SearchBar() {
-    const [queryValue, setQueryValue] = useState("");
-    const debouncedValue = useDebounce(queryValue, 500);
-    const {data, loadingError, isLoaded} = useSearch(debouncedValue);
-
-    const changeHandler = (event) => {
-        setQueryValue(event.target.value);
-    }
-
-
+    const {searchQuery, queryChangeHandler} = useMovie();
     return (
         <form className="d-flex gap-2">
-            <input className="form-control" type="text" name="query" value={queryValue} onChange={changeHandler} placeholder="Search movies.." />
+            <input className="form-control" type="text" name="query" value={searchQuery} onChange={queryChangeHandler} placeholder="Search movies.." />
         </form>
     )
 }
