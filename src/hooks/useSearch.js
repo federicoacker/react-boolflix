@@ -7,14 +7,16 @@ function mapResults(arrayOfResults){
     const mappedResults = arrayOfResults.map(item =>{
         const nameKey = item.media_type === "tv" ? "name" : "title";
         const originalNameKey = item.media_type === "tv" ? "original_name" : "original_title";
+        const adaptedScore = Math.ceil(item.vote_average/10 * 5);
 
         return {
             id:item.id,
             title:item[nameKey],
             original_title:item[originalNameKey],
-            vote_average:item.vote_average,
+            vote_average: adaptedScore ? adaptedScore : 1,
             original_language:item.original_language,
-            imageSrc:item.poster_path ? `https://image.tmdb.org/t/p/w780${item.poster_path}` : "https://placehold.co/780"
+            imageSrc:item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` 
+            : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Banier_ontbreekt.svg/960px-Banier_ontbreekt.svg.png?utm_source=commons.wikimedia.org&utm_campaign=gallery&utm_content=thumbnail"
         }
     });
 

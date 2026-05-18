@@ -1,12 +1,12 @@
 import { Row } from "react-bootstrap";
-import Movie from "./Movie";
+import ItemCard from "./ItemCard";
 
-function MovieList({data, isLoaded}) {
+function ItemCardList({data, isLoaded}) {
 
     return (
         <Row className="row-gap-2 py-4">
             {(isLoaded) && data?.map(({ id, title, name, original_language, original_title, vote_average, imageSrc }) => {
-                return <Movie
+                return <ItemCard
                     key={id}
                     title={title}
                     name={name}
@@ -20,4 +20,4 @@ function MovieList({data, isLoaded}) {
     )
 }
 
-export default MovieList
+export default ItemCardList

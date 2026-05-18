@@ -30,10 +30,10 @@
 }
 
 .card-header{
-  min-height: 500px;
+  height:700px;
 }
 .card-img-top{
-  height: 450px;
+  height: 550px;
   object-fit:cover;
-  object-position:top;
+  object-position:center;
 }

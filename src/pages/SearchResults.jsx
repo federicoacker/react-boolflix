@@ -1,7 +1,7 @@
 
 import { useSearchParams } from "react-router";
-import MovieList from "../components/Main/MovieList"
 import useSearch from "../hooks/useSearch";
+import ItemCardList from "../components/Main/ItemCardList";
 
 function SearchResults() {
 
@@ -11,7 +11,7 @@ function SearchResults() {
     return (
         <div className="text-white bg-tertiary">
             {loadingError && <h1>{loadingError}</h1>}
-            {(isLoaded) && <MovieList data={data} isLoaded={isLoaded}/>}
+            {(isLoaded) && <ItemCardList data={data} isLoaded={isLoaded}/>}
         </div>
     )
 }
