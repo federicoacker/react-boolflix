@@ -7,7 +7,7 @@ function Movie({ title, original_language, original_title, vote_average }) {
                 <Card.Header>
                     <Card.Title>
                         <h5>Titolo: {title}</h5>
-                        {original_title !== title}<h5>Titolo Originale:{original_title}</h5>
+                        {original_title !== title && <h5>Titolo Originale:{original_title}</h5> }
                     </Card.Title>
                 </Card.Header>
                 <Card.Body>
