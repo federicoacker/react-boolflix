@@ -14,7 +14,7 @@ function useDebounce(initialValue, delay) {
         };
     }, [ delay, value]);
 
-    return [debouncedValue, setValue];
+    return [debouncedValue, setValue, value];
 }
 
 export default useDebounce;

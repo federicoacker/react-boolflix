@@ -1,9 +1,8 @@
 import { Row } from "react-bootstrap";
 import Movie from "./Movie";
-import useMovie from "../../hooks/useMovie"
 
-function MovieList() {
-    const {data, isLoaded } = useMovie();
+function MovieList({data, isLoaded}) {
+
     return (
         <Row className="row-gap-2 py-4">
             {(isLoaded) && data?.results?.map(({ id, title, original_language, original_title, vote_average }) => {
