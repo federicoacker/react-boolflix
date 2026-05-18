@@ -1,33 +1,53 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const API_URL = "https://api.themoviedb.org/3/search/movie";
+const API_URL = "https://api.themoviedb.org/3/search/multi";
+
+function mapResults(arrayOfResults){
+    const mappedResults = arrayOfResults.map(item =>{
+        const nameKey = item.media_type === "tv" ? "name" : "title";
+        const originalNameKey = item.media_type === "tv" ? "original_name" : "original_title";
+
+        return {
+            id:item.id,
+            title:item[nameKey],
+            original_title:item[originalNameKey],
+            vote_average:item.vote_average,
+            original_language:item.original_language,
+            poster_path:item.poster_path
+        }
+    });
+
+    return mappedResults;
+}
+
 
 function useSearch(query) {
     const [data, setData] = useState({});
     const [loadingError, setLoadingError] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
-    const [queryUrl, setQueryUrl] = useState("");
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${import.meta.env.VITE_TMDP_READ_ACCESS_TOKEN}`
-        }
-    };
 
     useEffect(() => {
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${import.meta.env.VITE_TMDP_READ_ACCESS_TOKEN}`
+            }
+        };
+
         fetch(`${API_URL}?query=${query}&include_adult=false&language=it-IT`, options)
             .then(response => response.json())
             .then(json => {
+                const excludePeople = json.results.filter(item => item.media_type !== "person");
+                const mappedProperly = mapResults(excludePeople);
                 setIsLoaded(true);
-                setData(json);
-                setQueryUrl(`?query=${query}`)
+                setData(mappedProperly);
+                console.log("LOADED");
             })
             .catch(error => {
                 setIsLoaded(false);
-                setLoadingError(error);
+                setLoadingError(error.message);
             })
     }, [query]
     );
@@ -36,7 +56,6 @@ function useSearch(query) {
         data,
         loadingError,
         isLoaded,
-        queryUrl
     }
 }
 
