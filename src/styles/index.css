@@ -10,3 +10,6 @@
   componenti. Per stili specifici di un singolo componente è preferibile
   usare un CSS Module (es. `NomeComponente.module.css`).
 */
+.app-wrapper{
+  height:100vh;
+}
