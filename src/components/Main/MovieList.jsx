@@ -5,7 +5,7 @@ function MovieList({data, isLoaded}) {
 
     return (
         <Row className="row-gap-2 py-4">
-            {(isLoaded) && data?.map(({ id, title, name, original_language, original_title, vote_average }) => {
+            {(isLoaded) && data?.map(({ id, title, name, original_language, original_title, vote_average, imageSrc }) => {
                 return <Movie
                     key={id}
                     title={title}
@@ -13,6 +13,7 @@ function MovieList({data, isLoaded}) {
                     original_language={original_language}
                     original_title={original_title}
                     vote_average={vote_average}
+                    imageSrc={imageSrc}
                 />
             })}
         </Row>

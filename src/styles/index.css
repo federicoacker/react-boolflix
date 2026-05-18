@@ -28,3 +28,12 @@
 .lang-icon {
   background-image: url(../../node_modules/@textabledev/langs-flags-list/lang-flags.png);
 }
+
+.card-header{
+  min-height: 500px;
+}
+.card-img-top{
+  height: 450px;
+  object-fit:cover;
+  object-position:top;
+}

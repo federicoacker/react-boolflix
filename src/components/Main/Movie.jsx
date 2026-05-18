@@ -1,12 +1,13 @@
 import { Card, Col } from "react-bootstrap"
 import { Tooltip } from "react-tooltip"
 
-function Movie({ title, name, original_language, original_title, vote_average }) {
+function Movie({ title, name, original_language, original_title, vote_average, imageSrc }) {
     console.log(name);
     return (
         <Col xs={12} sm={6} md={4} data-bs-theme="dark">
-            <Card>
+            <Card className="h-100">
                 <Card.Header>
+                    <Card.Img variant="top" src={imageSrc}/>
                     <Card.Title>
                         <h5>Titolo: {title}</h5>
                     </Card.Title>

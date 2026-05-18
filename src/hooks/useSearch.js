@@ -14,7 +14,7 @@ function mapResults(arrayOfResults){
             original_title:item[originalNameKey],
             vote_average:item.vote_average,
             original_language:item.original_language,
-            poster_path:item.poster_path
+            imageSrc:item.poster_path ? `https://image.tmdb.org/t/p/w780${item.poster_path}` : "https://placehold.co/780"
         }
     });
 
