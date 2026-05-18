@@ -1,5 +1,5 @@
 import { Card, Col } from "react-bootstrap"
-
+import { Tooltip } from "react-tooltip"
 
 function Movie({ title, original_language, original_title, vote_average }) {
     return (
@@ -8,13 +8,18 @@ function Movie({ title, original_language, original_title, vote_average }) {
                 <Card.Header>
                     <Card.Title>
                         <h5>Titolo: {title}</h5>
-                        {original_title !== title && <h5>Titolo Originale:{original_title}</h5> }
+                        {original_title !== title && <h5>Titolo Originale:{original_title}</h5>}
                     </Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        Lingua Originale: <span className={`px-4 lang-icon lang-icon-${original_language}`}/>
+                        Lingua Originale: <span
+                            className={`lang-icon lang-icon-${original_language}`}
+                            data-tooltip-id="language-tooltip"
+                            data-tooltip-content={original_language}
+                        />
                     </Card.Text>
+                    <Tooltip id="language-tooltip" />
                     <Card.Text>
                         Voto: {vote_average};
                     </Card.Text>
