@@ -13,3 +13,14 @@
 .app-wrapper{
   height:100vh;
 }
+
+.header-wrapper{
+  height:15vh;
+}
+
+.main-wrapper{
+  max-width:100vw;
+  height:85vh;
+  overflow:auto;
+  background-color:var(--bs-gray-dark);
+}

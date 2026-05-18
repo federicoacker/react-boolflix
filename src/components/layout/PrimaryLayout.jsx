@@ -12,11 +12,13 @@ function PrimaryLayout() {
                         <Header />
                     </Container>
                 </div>
-                <Container>
-                    <Main>
-                        <Outlet />
-                    </Main>
-                </Container>
+                <div className="main-wrapper">
+                    <Container>
+                        <Main>
+                            <Outlet />
+                        </Main>
+                    </Container>
+                </div>
             </div>
         </>
     )
