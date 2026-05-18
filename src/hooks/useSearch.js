@@ -7,6 +7,7 @@ function useSearch(query) {
     const [data, setData] = useState({});
     const [loadingError, setLoadingError] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
+    const [queryUrl, setQueryUrl] = useState("");
 
     const options = {
         method: 'GET',
@@ -22,6 +23,7 @@ function useSearch(query) {
             .then(json => {
                 setIsLoaded(true);
                 setData(json);
+                setQueryUrl(`?query=${query}`)
             })
             .catch(error => {
                 setIsLoaded(false);
@@ -33,7 +35,8 @@ function useSearch(query) {
     return {
         data,
         loadingError,
-        isLoaded
+        isLoaded,
+        queryUrl
     }
 }
 

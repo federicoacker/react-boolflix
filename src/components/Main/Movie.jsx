@@ -12,7 +12,8 @@ function Movie({ title, original_language, original_title, vote_average }) {
                 </Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        Lingua Originale: {original_language};
+                        Lingua Originale: {original_language}
+                        <img src={`https://flagsapi.com/${original_language.toUpperCase()}/shiny/64.png`}/>
                     </Card.Text>
                     <Card.Text>
                         Voto: {vote_average};

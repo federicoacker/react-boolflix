@@ -1,13 +1,13 @@
 
-import MovieList from "../components/Main/MovieList";
+import { Navigate } from "react-router";
 import useMovie from "../hooks/useMovie"
 
 function Home() {
-    const {isEmpty, isLoaded, loadingError} = useMovie();
+    const {loadingError, queryUrl} = useMovie();
     return (
         <div className="text-white bg-tertiary">
             {loadingError && <h1>{loadingError}</h1>}
-            {(isLoaded && !isEmpty) && <MovieList/>}
+            {!loadingError && <Navigate to={`/search${queryUrl}`}/>}
         </div>
     )
 }
