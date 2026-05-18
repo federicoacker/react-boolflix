@@ -29,11 +29,28 @@
   background-image: url(../../node_modules/@textabledev/langs-flags-list/lang-flags.png);
 }
 
-.card-header{
-  height:700px;
+.card-container{
+  perspective:1000px;
 }
-.card-img-top{
-  height: 550px;
+
+.result-card{
+  border-radius:20px;
+  height:700px;
+  transition: transform 2s;
+  transform-style: preserve-3d;
+}
+
+.result-card.flipped{
+  transform:rotateY(180deg);
+}
+
+.back{
+  backface-visibility: hidden;
+  transform:rotateY(180deg);
+}
+
+.posterImage{
+  border-radius:20px;
   object-fit:cover;
   object-position:center;
 }
