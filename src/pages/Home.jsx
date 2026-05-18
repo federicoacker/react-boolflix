@@ -1,12 +1,13 @@
 
+import MovieList from "../components/Main/MovieList";
 import useMovie from "../hooks/useMovie"
 
 function Home() {
-    const {data, isLoaded, loadingError} = useMovie();
+    const {isEmpty, isLoaded, loadingError} = useMovie();
     return (
         <div className="text-white bg-tertiary">
             {loadingError && <h1>{loadingError}</h1>}
-            {isLoaded && JSON.stringify(data)}
+            {(isLoaded && !isEmpty) && <MovieList/>}
         </div>
     )
 }
