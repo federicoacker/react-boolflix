@@ -1,5 +1,6 @@
 import { Card, Col } from "react-bootstrap"
 
+
 function Movie({ title, original_language, original_title, vote_average }) {
     return (
         <Col xs={12} sm={6} md={4} data-bs-theme="dark">
@@ -12,8 +13,7 @@ function Movie({ title, original_language, original_title, vote_average }) {
                 </Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        Lingua Originale: {original_language}
-                        <img src={`https://flagsapi.com/${original_language.toUpperCase()}/shiny/64.png`}/>
+                        Lingua Originale: <span className={`px-4 lang-icon lang-icon-${original_language}`}/>
                     </Card.Text>
                     <Card.Text>
                         Voto: {vote_average};
