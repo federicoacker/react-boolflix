@@ -86,6 +86,12 @@
   margin-right: auto;
   margin-left: auto;
 }
+.info-image-wrapper{
+  width:20%;
+}
+.info-body{
+  width:80%;
+}
 
 .list-row{
   flex-wrap:wrap;

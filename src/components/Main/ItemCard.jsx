@@ -2,11 +2,11 @@ import { useState } from "react"
 import { Card, Col } from "react-bootstrap"
 import { useNavigate } from "react-router";
 import { Tooltip } from "react-tooltip"
+import Vote from "./Vote";
 
 function ItemCard({ id, media_type, title, original_language, original_title, vote_average, imageSrc, overview }) {
     const [isHovered, setIsHovered] = useState(false);
-    const filledStars = Array.from({ length: vote_average }, (element, index) => <i key={index} className="bi bi-star-fill"></i>);
-    const emptyStars = Array.from({ length: 5 - filledStars.length}, (element, index) => <i key={index} className="bi bi-star"></i>)
+
     const navigate = useNavigate();
 
     return (
@@ -67,7 +67,7 @@ function ItemCard({ id, media_type, title, original_language, original_title, vo
                             <Tooltip id="language-tooltip" />
                             <hr/>
                             <Card.Text>
-                                Voto: {filledStars} {emptyStars} 
+                                Voto: <Vote vote={vote_average}/>
                             </Card.Text>
                         </Card.Body>
                     </div>

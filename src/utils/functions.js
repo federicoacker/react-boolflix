@@ -2,7 +2,7 @@ function mapResults(arrayOfResults){
     const mappedResults = arrayOfResults.map(item =>{
         const nameKey = item.media_type === "tv" ? "name" : "title";
         const originalNameKey = item.media_type === "tv" ? "original_name" : "original_title";
-        const adaptedScore = Math.ceil(item.vote_average/10 * 5);
+        const adaptedScore = item.vote_average/2;
 
         return {
             id:item.id,
