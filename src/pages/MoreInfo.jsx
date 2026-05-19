@@ -7,8 +7,7 @@ function MoreInfo() {
     const params = useParams();
     const infoURL = `https://api.themoviedb.org/3/${params.media_type}/${params.id}`;
 
-    const { data, isLoaded, loadingError } = useDetails(infoURL);
-    console.log(isLoaded, loadingError);
+    const { data } = useDetails(infoURL);
 
 
     return (

@@ -9,8 +9,8 @@ function Home() {
             {homeEndpoints.map(endpoint => {
                 return(
                     <div key={endpoint.id}>
-                        <h2>{endpoint.title}</h2>
-                        <MainPageScrollableDisplay API_URL={endpoint.endpoint}/>
+                        
+                        <MainPageScrollableDisplay API_URL={endpoint.endpoint} title={endpoint.title}/>
                     </div>
                 )
             })}

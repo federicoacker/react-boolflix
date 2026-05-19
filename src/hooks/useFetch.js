@@ -20,13 +20,13 @@ function useFetch(URL) {
         fetch(`${URL}?include_adult=false&language=it-IT`, options)
             .then(response => response.json())
             .then(result => {
-                setIsLoaded(true);
                 const mediaTypedResults = result.results.map(element => ({
                     ...element,
                     media_type: element.name ? "tv" : "movie"
                 }))
                 const mappedMediaTypedResults = mapResults(mediaTypedResults);
                 setData(mappedMediaTypedResults);
+                setIsLoaded(true);
             })
             .catch(error => {
                 setIsLoaded(false);

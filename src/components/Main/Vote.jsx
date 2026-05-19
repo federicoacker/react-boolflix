@@ -1,7 +1,7 @@
 
 function Vote({ vote }) {
     let floatVote = vote % 1;
-    console.log(vote);
+
     const filledStars = Array.from({ length: 5 }, (element, index) => {
         if (index < vote - 1) {
             return <i key={index} className="bi bi-star-fill"></i>
