@@ -100,6 +100,10 @@
   flex-direction: column;
 }
 
+.main-logo{
+  cursor:pointer;
+}
+
 @media screen and (min-width: 992px) {
   .info-image-wrapper {
     width: 20%;

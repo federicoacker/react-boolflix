@@ -57,8 +57,7 @@ function ItemCard({ id, media_type, title, original_language, original_title, vo
                             className="btn btn-danger" 
                             name="more-info" 
                             onClick={()=>{
-
-                                navigate(`/${media_type}/${id}`)
+                                navigate(`/${media_type}/${id}`, {replace:true})
                             }
                             }
                                 >

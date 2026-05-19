@@ -15,19 +15,22 @@ function SearchBar() {
     const queryChangeHandler = (event) => {
         setQuery(event.target.value);
     }
-    
+    console.log(params);
+    console.log(isSearching);
     useEffect(() => {
-            if (debouncedQuery.trim() !== "" && !params.media_type) {
-                setSearchParams({ query: debouncedQuery });
-            }
-            else if (debouncedQuery.trim() === "" && isSearching) {
-                navigate(`/search?query=`);
-            }
-            else {
-                navigate(`/${params.media_type ? params.media_type : ""}/${params.id ? params.id : ""}`);
-                setQuery("");
-            }
-    }, [debouncedQuery, setSearchParams, navigate, isSearching, params.id, params.media_type, setQuery]);
+        if (debouncedQuery.trim() !== "" && !params.media_type) {
+            setSearchParams({ query: debouncedQuery });
+        }
+        else if (debouncedQuery.trim() === "" && isSearching) {
+            navigate(`/search?query=`);
+        }
+        else if (params.media_type) {
+            setQuery("");
+        }
+        else {
+            navigate("/");
+        }
+    }, [debouncedQuery, setSearchParams, navigate, isSearching, params.media_type, setQuery]);
 
     return (
         <input
