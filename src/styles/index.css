@@ -35,7 +35,7 @@
   max-height: 700px;
 }
 
-.result-card {
+.item-card {
   border-radius: 20px;
   height:100%;
   min-height: 400px;
@@ -43,7 +43,7 @@
   transform-style: preserve-3d;
 }
 
-.result-card.flipped {
+.item-card.flipped {
   transform: rotateY(180deg);
   box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
 }

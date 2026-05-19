@@ -8,7 +8,7 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
 
     return (
         <Col xs={12} sm={12} md={6} lg={4} xl={3} xxl={2} data-bs-theme="dark" className="card-container">
-            <Card className={`h-100 result-card front fs-4 ${isHovered && "flipped"}`} onClick={(event) => {
+            <Card className={`h-100 item-card front fs-4 ${isHovered && "flipped"}`} onClick={(event) => {
                 const target = event.target;
                 target.name === "movie-poster" && setIsHovered(true);
                 (target.name === "exit-button" || target.className.includes("bi-x-lg")) && setIsHovered(false);
