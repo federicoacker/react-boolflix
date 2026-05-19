@@ -33,8 +33,9 @@ function MoreInfo() {
             <div>
                 <h2>Cast:</h2>
                 <div className="d-flex flex-column row-gap-2 py-2">
-                    {actorData.map(({name, character, img}) => (
+                    {actorData.map(({id, name, character, img}) => (
                         <Actor 
+                        key = {id}
                         actorName={name}
                         actorImage={img}
                         actorRole={character}

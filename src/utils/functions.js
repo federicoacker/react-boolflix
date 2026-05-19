@@ -3,9 +3,9 @@ function mapResults(arrayOfResults){
         const nameKey = item.media_type === "tv" ? "name" : "title";
         const originalNameKey = item.media_type === "tv" ? "original_name" : "original_title";
         const adaptedScore = item.vote_average/2;
-
         return {
             id:item.id,
+            genre_ids:item.genre_ids,
             media_type:item.media_type,
             title:item[nameKey],
             original_title:item[originalNameKey],

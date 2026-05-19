@@ -18,8 +18,9 @@ function useCredits(URL) {
             .then(response => response.json())
             .then(result => {
                 const cast = result.cast;
-                const mappedCast = cast.map(({name, character, profile_path}) => {
+                const mappedCast = cast.map(({id, name, character, profile_path}) => {
                     return {
+                        id,
                         name,
                         character,
                         img:profile_path ? `https://image.tmdb.org/t/p/original${profile_path}`

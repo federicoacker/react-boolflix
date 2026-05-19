@@ -24,9 +24,19 @@ useEffect(() => {
         const tvGenres = fetch(TV_GENRES_URL, options)
             .then(response => response.json())
             .then(json => json.genres)
-            .catch(error => setLoadingErrors([...loadingErrors, error]))
+            .catch(error => setLoadingErrors([...loadingErrors, error]));
 
-        Promise.all([movieGenres, tvGenres]).then(result => setGenres(result));
+        Promise.all([movieGenres, tvGenres])
+        .then(results => {
+            const addedResults = [...results[0], ...results[1]];
+            let filteredResults = [];
+            for(let i=0; i<addedResults.length; i++){
+                filteredResults[addedResults[i].id] = addedResults[i];
+            }
+            filteredResults = Array.from([...new Set(filteredResults)]);
+            filteredResults.shift();
+            setGenres(filteredResults);
+        })
 }, [loadingErrors]);
 
 return [genres, loadingErrors];
