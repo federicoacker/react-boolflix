@@ -3,10 +3,11 @@ import { Card, Col } from "react-bootstrap"
 import { useNavigate } from "react-router";
 import { Tooltip } from "react-tooltip"
 import Vote from "./Vote";
+import useSearchContext from "../../hooks/useSearchContext";
 
 function ItemCard({ id, media_type, title, original_language, original_title, vote_average, imageSrc, overview }) {
     const [isHovered, setIsHovered] = useState(false);
-
+    const {setIsSearching} = useSearchContext();
     const navigate = useNavigate();
 
     return (
@@ -57,6 +58,7 @@ function ItemCard({ id, media_type, title, original_language, original_title, vo
                             className="btn btn-danger" 
                             name="more-info" 
                             onClick={()=>{
+                                setIsSearching(false);
                                 navigate(`/${media_type}/${id}`, {replace:true})
                             }
                             }

@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams, useParams, useLocation } from "react-router";
 import { useEffect } from "react";
 import useDebounce from "../../hooks/useDebounce";
+import useSearchContext from "../../hooks/useSearchContext";
 import { useState } from "react";
 
 
@@ -8,7 +9,7 @@ function SearchBar() {
     const location = useLocation();
     const navigate = useNavigate();
     const params = useParams();
-    const [isSearching, setIsSearching] = useState(false);
+    const {isSearching, setIsSearching} = useSearchContext();
     const [searchParams, setSearchParams] = useSearchParams();
     const [initialValue] = useState(searchParams.get("query"));
     const [debouncedQuery, setQuery, query] = useDebounce(initialValue ? initialValue : "", 500);

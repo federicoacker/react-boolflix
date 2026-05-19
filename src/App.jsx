@@ -5,21 +5,24 @@ import NotFound from "./pages/NotFound";
 import SearchResults from "./pages/SearchResults";
 import MoreInfo from "./pages/MoreInfo";
 import { GenreProvider } from "./contexts/GenreContext";
+import { SearchProvider } from "./contexts/SearchContext";
 
 function App() {
   return (
 
     <BrowserRouter>
-      <GenreProvider>
-        <Routes>
-          <Route Component={PrimaryLayout}>
-            <Route path="/" Component={Home} />
-            <Route path="/search" Component={SearchResults} />
-            <Route path="/:media_type/:id" Component={MoreInfo} />
-            <Route path="*" Component={NotFound} />
-          </Route>
-        </Routes>
-      </GenreProvider>
+      <SearchProvider>
+        <GenreProvider>
+          <Routes>
+            <Route Component={PrimaryLayout}>
+              <Route path="/" Component={Home} />
+              <Route path="/search" Component={SearchResults} />
+              <Route path="/:media_type/:id" Component={MoreInfo} />
+              <Route path="*" Component={NotFound} />
+            </Route>
+          </Routes>
+        </GenreProvider>
+      </SearchProvider>
     </BrowserRouter>
 
   );
