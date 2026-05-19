@@ -4,6 +4,7 @@ import { Tooltip } from "react-tooltip"
 
 function ItemCard({ title, original_language, original_title, vote_average, imageSrc, overview }) {
     const [isHovered, setIsHovered] = useState(false);
+    const filledStars = Array.from({ length: vote_average }, (element, index) => <i key={index} className="bi bi-star-fill"></i>);
 
     return (
         <Col xs={12} sm={12} md={6} lg={4} xl={3} xxl={2} data-bs-theme="dark" className="card-container">
@@ -17,14 +18,14 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
 
                         <Card.Header className="d-flex flex justify-content-between align-items-center column-gap-2">
                             <Card.Title>
-                                <h3 className="text-center">{title}</h3>
+                                <h3 className="item-main-title">{title}</h3>
                             </Card.Title>
                             <button className="btn btn-danger align-self-start" name="exit-button">
                                 <i className="bi bi-x-lg"></i>
                             </button>
                         </Card.Header>
                         <Card.Body className="d-flex flex-column ">
-                            <Card.Text className="flex-grow-1">
+                            <Card.Text className="flex-grow-1 item-title">
                                 {original_title !== title &&
                                     <span>
                                         Titolo Originale: {original_title}
@@ -46,7 +47,7 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                             <Tooltip id="language-tooltip" />
                             <hr/>
                             <Card.Text>
-                                Voto: {Array.from({ length: vote_average }, (element, index) => <i key={index} className="bi bi-star-fill"></i>)}
+                                Voto: {filledStars} 
                             </Card.Text>
                         </Card.Body>
                     </div>
