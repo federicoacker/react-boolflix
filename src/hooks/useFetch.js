@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const UPCOMING_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/upcoming";
-const TOP_RATED_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/top_rated";
-const POPULAR_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/popular";
 
-const POPULAR_SERIES_API_URL = "https://api.themoviedb.org/3/movie/popular";
-const TOP_RATED_SERIES_API_URL = "https://api.themoviedb.org/3/tv/top_rated";
 
 
 function useFetch(URL) {
@@ -19,6 +14,10 @@ function useFetch(URL) {
             .then(response => response.json())
             .then(result => {
                 setLoaded(true);
+                result.map(element => ({
+                    ...element,
+                    media_type: element.name ? "tv" : "movie"
+                }))
                 setData(result);
             })
             .catch(error => setLoadingError(error));

@@ -8,7 +8,7 @@ function mapResults(arrayOfResults){
             id:item.id,
             title:item[nameKey],
             original_title:item[originalNameKey],
-            vote_average: adaptedScore ? adaptedScore : 1,
+            vote_average: adaptedScore,
             original_language:item.original_language,
             overview:item.overview,
             imageSrc:item.poster_path ? `https://image.tmdb.org/t/p/original${item.poster_path}` 

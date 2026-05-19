@@ -5,6 +5,7 @@ import { Tooltip } from "react-tooltip"
 function ItemCard({ title, original_language, original_title, vote_average, imageSrc, overview }) {
     const [isHovered, setIsHovered] = useState(false);
     const filledStars = Array.from({ length: vote_average }, (element, index) => <i key={index} className="bi bi-star-fill"></i>);
+    const emptyStars = Array.from({ length: 5 - filledStars.length}, (element, index) => <i key={index} className="bi bi-star"></i>)
 
     return (
         <Col xs={12} sm={12} md={6} lg={4} xl={3} xxl={2} data-bs-theme="dark" className="card-container">
@@ -47,12 +48,12 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                             <Tooltip id="language-tooltip" />
                             <hr/>
                             <Card.Text>
-                                Voto: {filledStars} 
+                                Voto: {filledStars} {emptyStars} 
                             </Card.Text>
                         </Card.Body>
                     </div>
                 }
-                {!isHovered ? <img src={imageSrc} alt={title} name="movie-poster" className="img-fluid posterImage front" /> : null}
+                {!isHovered && <img src={imageSrc} alt={title} name="movie-poster" className="img-fluid posterImage front" />}
             </Card>
         </Col>
     )
