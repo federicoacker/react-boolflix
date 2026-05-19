@@ -125,6 +125,11 @@
   .info-body {
     width: 70%;
   }
+  .ellipsis-box {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 1400px) {
@@ -140,11 +145,7 @@
   .item-main-title {
     font-size: 1.5rem;
   }
-  .ellipsis-box {
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    font-size: 1rem;
-  }
+  
 }
 
 @media screen and (min-width: 1800px) {

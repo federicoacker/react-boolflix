@@ -63,7 +63,7 @@ function ItemCard({ id, media_type, title, original_language, original_title, vo
                                 >
                                 Più informazioni
                             </button>
-                            <Tooltip id="language-tooltip" />
+                            <Tooltip id="language-tooltip" className="rounded bg-danger px-1 fs-6"/>
                             <hr/>
                             <Card.Text>
                                 Voto: <Vote vote={vote_average}/>
