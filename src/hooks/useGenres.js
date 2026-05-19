@@ -34,7 +34,7 @@ useEffect(() => {
                 filteredResults[addedResults[i].id] = addedResults[i];
             }
             filteredResults = Array.from([...new Set(filteredResults)]);
-            filteredResults.shift();
+            filteredResults.splice(filteredResults.indexOf(undefined), 1);
             setGenres(filteredResults);
         })
 }, [loadingErrors]);

@@ -48,8 +48,7 @@ function SearchBar() {
             }}
             onBlur={(event) => {
                 const relatedTarget = event.relatedTarget;
-                relatedTarget?.name !== "genre-select" && setIsSearching(false);
-                
+                relatedTarget?.name === "genre-select" ? setIsSearching(true) : setIsSearching(false);
             }}
         />
     )
