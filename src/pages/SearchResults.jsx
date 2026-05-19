@@ -7,7 +7,7 @@ function SearchResults() {
 
     const [searchParams] = useSearchParams();
     const {data, loadingError, isLoaded} = useSearch(searchParams.get("query") ? searchParams.get("query") : "");
-
+    
     return (
         <div className="text-white bg-tertiary">
             {loadingError && <h1>{loadingError}</h1>}

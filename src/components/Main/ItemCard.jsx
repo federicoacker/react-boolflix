@@ -7,9 +7,14 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
 
     return (
         <Col xs={12} sm={12} md={6} xl={4} data-bs-theme="dark" className="card-container">
-            <Card className={`h-100 result-card front ${isHovered && "flipped"}`} onMouseEnter={() => { setIsHovered(true) }} onMouseLeave={() => { setIsHovered(false) }}>
+            <Card className={`h-100 result-card front ${isHovered && "flipped"}`} onClick={(event) => {
+                const target = event.target;
+                target.name === "movie-poster" && setIsHovered(true);
+                target.name === "exit-button" && setIsHovered(false);
+            }}>
                 {isHovered &&
-                    <div className="back">
+                    <div className="back h-100" name="back-card">
+                        <button className="btn btn-danger" name="exit-button">X</button>
                         <Card.Header className="d-flex flex-column row-gap-3">
                             <Card.Title>
                                 <h3 className="text-center">{title}</h3>
@@ -17,27 +22,27 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                         </Card.Header>
                         <Card.Body className="d-flex flex-column">
                             <Card.Text className="flex-grow-1">
-                                {original_title !== title && 
-                                <span>
-                                    Titolo Originale: {original_title}
-                                    <br/>
-                                </span>
+                                {original_title !== title &&
+                                    <span>
+                                        Titolo Originale: {original_title}
+                                        <br />
+                                    </span>
                                 }
-                                
+
                                 Lingua Originale: <span
                                     className={`lang-icon lang-icon-${original_language}`}
                                     data-tooltip-id="language-tooltip"
                                     data-tooltip-content={original_language}
                                 />
                             </Card.Text>
-                            <Tooltip id="language-tooltip" />
+                            <Tooltip id="language-tooltip" /> 
                             <Card.Text>
                                 Voto: {Array.from({ length: vote_average }, (element, index) => <i key={index} className="bi bi-star-fill"></i>)}
                             </Card.Text>
                         </Card.Body>
                     </div>
                 }
-                {!isHovered ? <img src={imageSrc} alt={title} className="img-fluid posterImage front"/> : null}
+                {!isHovered ? <img src={imageSrc} alt={title} name="movie-poster" className="img-fluid posterImage front" /> : null}
             </Card>
         </Col>
     )
