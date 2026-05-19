@@ -31,12 +31,14 @@
 
 .card-container {
   perspective: 1000px;
+  min-height: 500px;
   max-height: 700px;
 }
 
 .result-card {
   border-radius: 20px;
-  min-height: 450px;
+  height:100%;
+  min-height: 400px;
   transition: all 2s;
   transform-style: preserve-3d;
 }
@@ -45,9 +47,17 @@
   transform: rotateY(180deg);
   box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
 }
+
 .card-overview-text {
-  max-height: 350px;
-  overflow: auto;
+  height:50%;
+  
+}
+.ellipsis-box {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6; /* Number of lines to show before the ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .back {
@@ -58,6 +68,7 @@
 .front {
   object-fit: cover;
 }
+
 .posterImage {
   height: 100%;
   width: auto;
@@ -73,6 +84,12 @@
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   margin-left: auto;
+}
+
+@media screen and (min-width: 1400px){
+  .ellipsis-box{
+    -webkit-line-clamp: 4;
+  }
 }
 
 @media screen and (min-width: 1800px) {

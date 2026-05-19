@@ -13,7 +13,7 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                 (target.name === "exit-button" || target.className.includes("bi-x-lg")) && setIsHovered(false);
             }}>
                 {isHovered &&
-                    <div className="back h-100" name="back-card">
+                    <div className="back h-100 d-flex flex-column" name="back-card">
 
                         <Card.Header className="d-flex flex justify-content-between align-items-center column-gap-2">
                             <Card.Title>
@@ -23,7 +23,7 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                                 <i className="bi bi-x-lg"></i>
                             </button>
                         </Card.Header>
-                        <Card.Body className="d-flex flex-column">
+                        <Card.Body className="d-flex flex-column ">
                             <Card.Text className="flex-grow-1">
                                 {original_title !== title &&
                                     <span>
@@ -39,7 +39,7 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                                 />
                             </Card.Text>
                             <div className="card-overview-text">
-                                <Card.Text >
+                                <Card.Text className="ellipsis-box">
                                     {overview}
                                 </Card.Text>
                             </div>
