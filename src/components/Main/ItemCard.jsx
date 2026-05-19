@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Card, Col } from "react-bootstrap"
 import { Tooltip } from "react-tooltip"
 
-function ItemCard({ title, original_language, original_title, vote_average, imageSrc }) {
+function ItemCard({ title, original_language, original_title, vote_average, imageSrc, overview }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -10,15 +10,18 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
             <Card className={`h-100 result-card front ${isHovered && "flipped"}`} onClick={(event) => {
                 const target = event.target;
                 target.name === "movie-poster" && setIsHovered(true);
-                target.name === "exit-button" && setIsHovered(false);
+                (target.name === "exit-button" || target.className.includes("bi-x-lg")) && setIsHovered(false);
             }}>
                 {isHovered &&
                     <div className="back h-100" name="back-card">
-                        <button className="btn btn-danger" name="exit-button">X</button>
-                        <Card.Header className="d-flex flex-column row-gap-3">
+
+                        <Card.Header className="d-flex flex justify-content-between align-items-center column-gap-2">
                             <Card.Title>
                                 <h3 className="text-center">{title}</h3>
                             </Card.Title>
+                            <button className="btn btn-danger align-self-start" name="exit-button">
+                                <i className="bi bi-x-lg"></i>
+                            </button>
                         </Card.Header>
                         <Card.Body className="d-flex flex-column">
                             <Card.Text className="flex-grow-1">
@@ -35,7 +38,13 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                                     data-tooltip-content={original_language}
                                 />
                             </Card.Text>
-                            <Tooltip id="language-tooltip" /> 
+                            <div className="card-overview-text">
+                                <Card.Text >
+                                    {overview}
+                                </Card.Text>
+                            </div>
+                            <Tooltip id="language-tooltip" />
+                            <hr/>
                             <Card.Text>
                                 Voto: {Array.from({ length: vote_average }, (element, index) => <i key={index} className="bi bi-star-fill"></i>)}
                             </Card.Text>

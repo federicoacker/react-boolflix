@@ -45,6 +45,10 @@
   transform:rotateY(180deg);
   box-shadow: 0px 0px 10px rgba(255,0,0,0.5);
 }
+.card-overview-text{
+  max-height:400px;
+  overflow:auto;
+}
 
 .back{
   backface-visibility: hidden;

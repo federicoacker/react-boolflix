@@ -5,7 +5,7 @@ function ItemCardList({data, isLoaded}) {
 
     return (
         <Row className="row-gap-2 py-4 result-row">
-            {(isLoaded) && data?.map(({ id, title, original_language, original_title, vote_average, imageSrc }) => {
+            {(isLoaded) && data?.map(({ id, title, original_language, original_title, vote_average, imageSrc, overview }) => {
                 return <ItemCard
                     key={id}
                     title={title}
@@ -13,6 +13,7 @@ function ItemCardList({data, isLoaded}) {
                     original_title={original_title}
                     vote_average={vote_average}
                     imageSrc={imageSrc}
+                    overview={overview}
                 />
             })}
         </Row>
