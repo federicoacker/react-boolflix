@@ -5,19 +5,27 @@ import { useState } from "react";
 
 
 function SearchBar() {
+    const navigate = useNavigate();
+    const [isSearching, setIsSearching] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const [initialValue] = useState(searchParams.get("query"));
     const [debouncedQuery, setQuery, query] = useDebounce(initialValue ? initialValue : "", 500);
-    const navigate = useNavigate();
 
     const queryChangeHandler = (event) => {
         setQuery(event.target.value);
     }
+    console.log(isSearching);
     useEffect( () => {
         if(debouncedQuery.trim() !== ""){
             setSearchParams({query:debouncedQuery});
         }
-    }, [debouncedQuery, setSearchParams]);
+        else if(debouncedQuery.trim() === "" && isSearching){
+            navigate(`/search?query=`);
+        }
+        else{
+            navigate("/");
+        }
+    }, [debouncedQuery, setSearchParams, navigate, isSearching]);
 
     return (
         <input 
@@ -27,7 +35,13 @@ function SearchBar() {
         value={query} 
         onChange={queryChangeHandler} 
         placeholder="Search movies.." 
-        onClick={()=>{navigate("/search")}}/>
+        onClick={()=>{
+            setIsSearching(true);
+        }}
+        onBlur={()=>{
+            setIsSearching(false);
+        }}
+        />
     )
 }
 

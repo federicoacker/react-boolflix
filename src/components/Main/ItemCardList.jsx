@@ -4,7 +4,7 @@ import ItemCard from "./ItemCard";
 function ItemCardList({data, isLoaded}) {
 
     return (
-        <Row className="row-gap-2 py-4 result-row">
+        <Row className="row-gap-2 py-4 result-row g-1">
             {(isLoaded) && data?.map(({ id, title, original_language, original_title, vote_average, imageSrc, overview }) => {
                 return <ItemCard
                     key={id}

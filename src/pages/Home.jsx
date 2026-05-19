@@ -1,6 +1,4 @@
 
-import { Navigate } from "react-router";
-
 
 function Home() {
     return (

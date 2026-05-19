@@ -7,13 +7,13 @@ function PrimaryLayout() {
     return (
         <>
             <div className="app-wrapper">
-                <div className="header-wrapper bg-dark pb-4">
+                <div className="header-wrapper bg-dark pb-4 d-flex align-items-center">
                     <Container>
                         <Header />
                     </Container>
                 </div>
                 <div className="main-wrapper">
-                    <Container>
+                    <Container fluid>
                         <Main>
                             <Outlet />
                         </Main>
