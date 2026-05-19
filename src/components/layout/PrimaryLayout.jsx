@@ -13,7 +13,7 @@ function PrimaryLayout() {
                     </Container>
                 </div>
                 <div className="main-wrapper">
-                    <Container fluid>
+                    <Container fluid="xxxl">
                         <Main>
                             <Outlet />
                         </Main>
