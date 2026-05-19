@@ -12,18 +12,20 @@ function MoreInfo() {
 
 
     return (
-        <div className="d-flex text-light ">
-            <div className="info-image-wrapper">
+        <div className="d-flex text-light my-5 border border-light more-info-wrapper">
+            <div className="info-image-wrapper border-end border-light">
                 <img src={data.imageSrc} className="img-fluid" />
             </div>
-            <div className="info-body d-flex flex-column px-5">
-                <h2>Titolo: {data.title}</h2>
-                <hr/>
-                <p>
+            <div className="info-body d-flex flex-column px-5 py-5 justify-content-between">
+                <div>
+                    <h2>Titolo: {data.title}</h2>
+                    <hr />
+                </div>
+                <p className="flex-grow-1">
                     {data.overview}
                 </p>
                 <p>
-                    Voto: <Vote vote={data.adaptedVote}/>
+                    Voto: <Vote vote={data.adaptedVote} />
                 </p>
             </div>
         </div>
