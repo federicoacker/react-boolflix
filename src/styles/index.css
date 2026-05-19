@@ -86,7 +86,13 @@
   margin-left: auto;
 }
 .info-image-wrapper {
+  display:flex;
   width: 100%;
+}
+.more-info-movie-image{
+  width:100%;
+  object-position:center;
+  object-fit:cover;
 }
 .info-body {
   width: 100%;
@@ -104,15 +110,20 @@
   cursor:pointer;
 }
 
+.actor-image-wrapper,
+.actor-image{
+  width:60px;
+}
+
 @media screen and (min-width: 992px) {
   .info-image-wrapper {
-    width: 20%;
+    max-width: 20%;
   }
   .more-info-wrapper {
     flex-direction: row;
   }
   .info-body {
-    width: 80%;
+    width: 70%;
   }
 }
 @media screen and (min-width: 1400px) {
