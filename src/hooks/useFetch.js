@@ -17,7 +17,7 @@ function useFetch(URL) {
                 Authorization: `Bearer ${import.meta.env.VITE_TMDP_READ_ACCESS_TOKEN}`
             }
         };
-        fetch(URL, options)
+        fetch(`${URL}?include_adult=false&language=it-IT`, options)
             .then(response => response.json())
             .then(result => {
                 setIsLoaded(true);

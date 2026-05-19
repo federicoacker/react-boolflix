@@ -12,6 +12,11 @@ function SearchResults() {
         <div className="text-white bg-tertiary">
             {loadingError && <h1>{loadingError}</h1>}
             {(isLoaded) && <ItemCardList data={data} isLoaded={isLoaded}/>}
+            {!searchParams.get("query") && 
+                <div className="d-flex justify-content-center align-items-center">
+                    <h2 className="text-light-sublte"> Cerca qualcosa...</h2>
+                </div>
+            }
         </div>
     )
 }

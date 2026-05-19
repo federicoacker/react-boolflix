@@ -5,7 +5,7 @@ const POPULAR_SERIES_API_URL = "https://api.themoviedb.org/3/tv/popular";
 
 function PopularSeries() {
     const { data, loadingError, isLoaded } = useFetch(POPULAR_SERIES_API_URL);
-    console.log(isLoaded);
+
     return (
         <ScrollingList data={data} loadingError={loadingError} isLoaded={isLoaded}/>
     )

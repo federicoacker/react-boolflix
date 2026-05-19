@@ -6,6 +6,7 @@ function mapResults(arrayOfResults){
 
         return {
             id:item.id,
+            media_type:item.media_type,
             title:item[nameKey],
             original_title:item[originalNameKey],
             vote_average: adaptedScore,

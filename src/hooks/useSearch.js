@@ -25,7 +25,7 @@ function useSearch(query) {
                 const mappedProperly = mapResults(excludePeople);
                 setIsLoaded(true);
                 setData(mappedProperly);
-                console.log("LOADED");
+
             })
             .catch(error => {
                 setIsLoaded(false);

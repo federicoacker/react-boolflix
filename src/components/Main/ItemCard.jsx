@@ -1,19 +1,27 @@
 import { useState } from "react"
 import { Card, Col } from "react-bootstrap"
+import { useNavigate } from "react-router";
 import { Tooltip } from "react-tooltip"
 
-function ItemCard({ title, original_language, original_title, vote_average, imageSrc, overview }) {
+function ItemCard({ id, media_type, title, original_language, original_title, vote_average, imageSrc, overview }) {
     const [isHovered, setIsHovered] = useState(false);
     const filledStars = Array.from({ length: vote_average }, (element, index) => <i key={index} className="bi bi-star-fill"></i>);
     const emptyStars = Array.from({ length: 5 - filledStars.length}, (element, index) => <i key={index} className="bi bi-star"></i>)
+    const navigate = useNavigate();
 
     return (
         <Col xs={12} sm={12} md={6} lg={4} xl={3} xxl={2} data-bs-theme="dark" className="card-container">
-            <Card className={`h-100 item-card front fs-4 ${isHovered && "flipped"}`} onClick={(event) => {
+            <Card className={`h-100 item-card front fs-4 ${isHovered && "flipped"}`} 
+            onClick={(event) => {
                 const target = event.target;
                 target.name === "movie-poster" && setIsHovered(true);
                 (target.name === "exit-button" || target.className.includes("bi-x-lg")) && setIsHovered(false);
-            }}>
+            }}
+            tabIndex={title.length}
+            onBlur={(event)=>{
+                const relatedTarget = event.relatedTarget;
+                relatedTarget.name !== "more-info" && setIsHovered(false)}
+                }>
                 {isHovered &&
                     <div className="back h-100 d-flex flex-column" name="back-card">
 
@@ -45,6 +53,17 @@ function ItemCard({ title, original_language, original_title, vote_average, imag
                                     {overview}
                                 </Card.Text>
                             </div>
+                            <button 
+                            className="btn btn-danger" 
+                            name="more-info" 
+                            onClick={()=>{
+
+                                navigate(`/${media_type}/${id}`)
+                            }
+                            }
+                                >
+                                Più informazioni
+                            </button>
                             <Tooltip id="language-tooltip" />
                             <hr/>
                             <Card.Text>
