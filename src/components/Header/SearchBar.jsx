@@ -14,7 +14,6 @@ function SearchBar() {
     const queryChangeHandler = (event) => {
         setQuery(event.target.value);
     }
-    console.log(isSearching);
     useEffect( () => {
         if(debouncedQuery.trim() !== ""){
             setSearchParams({query:debouncedQuery});

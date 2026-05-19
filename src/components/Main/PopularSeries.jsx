@@ -1,9 +1,14 @@
+import useFetch from "../../hooks/useFetch";
+import ScrollingList from "./ScrollingList";
 
-const POPULAR_SERIES_API_URL = "https://api.themoviedb.org/3/movie/popular";
+const POPULAR_SERIES_API_URL = "https://api.themoviedb.org/3/tv/popular";
+
 function PopularSeries() {
-  return (
-    <div>PopularSeries</div>
-  )
+    const { data, loadingError, isLoaded } = useFetch(POPULAR_SERIES_API_URL);
+    console.log(isLoaded);
+    return (
+        <ScrollingList data={data} loadingError={loadingError} isLoaded={isLoaded}/>
+    )
 }
 
 export default PopularSeries

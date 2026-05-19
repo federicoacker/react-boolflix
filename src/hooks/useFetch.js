@@ -1,36 +1,47 @@
 import { useState } from "react";
 import { useEffect } from "react";
-
+import { mapResults } from "../utils/functions";
 
 
 
 function useFetch(URL) {
     const [data, setData] = useState([]);
     const [loadingError, setLoadingError] = useState("");
-    const [loaded, setLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        fetch(URL)
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${import.meta.env.VITE_TMDP_READ_ACCESS_TOKEN}`
+            }
+        };
+        fetch(URL, options)
             .then(response => response.json())
             .then(result => {
-                setLoaded(true);
-                result.map(element => ({
+                setIsLoaded(true);
+                const mediaTypedResults = result.results.map(element => ({
                     ...element,
                     media_type: element.name ? "tv" : "movie"
                 }))
-                setData(result);
+                const mappedMediaTypedResults = mapResults(mediaTypedResults);
+                setData(mappedMediaTypedResults);
             })
-            .catch(error => setLoadingError(error));
+            .catch(error => {
+                setIsLoaded(false);
+                setLoadingError(error);}
+            );
 
         return () => {
-            setLoaded(false);
+            setIsLoaded(false);
         }
-    },[]);
+    },[URL]);
 
     return {
         data,
         loadingError,
-        loaded
+        isLoaded: isLoaded
     };
 }
 

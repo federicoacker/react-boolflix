@@ -87,7 +87,17 @@
   margin-left: auto;
 }
 
+.list-row{
+  flex-wrap:wrap;
+}
+
 @media screen and (min-width: 1400px){
+  .list-row{
+    flex-wrap:nowrap;
+    max-width: 80vw;
+    overflow-x:scroll;
+    scrollbar-width:none;
+  }
   .item-title{
     font-size: 1rem;
   }
