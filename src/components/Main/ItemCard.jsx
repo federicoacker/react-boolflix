@@ -73,7 +73,7 @@ function ItemCard({ id, media_type, title, original_language, original_title, vo
                         </Card.Body>
                     </div>
                 }
-                {!isHovered && <img src={imageSrc} alt={title} name="movie-poster" className="img-fluid posterImage front" />}
+                {!isHovered && <img loading="lazy" src={imageSrc} alt={title} name="movie-poster" className="img-fluid posterImage front" />}
             </Card>
         </Col>
     )

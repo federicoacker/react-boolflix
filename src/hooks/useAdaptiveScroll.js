@@ -8,7 +8,7 @@ function useAdaptiveScroll() {
         const element = rowRef.current;
         const handleScroll = (event) => {
             // MOBILE/TABLET < 992px
-            if (window.innerWidth < 992) {
+            if (window.innerWidth < 1400) {
                 return;
             }
             // DESKTOP >= 992px
@@ -18,7 +18,7 @@ function useAdaptiveScroll() {
             element.scrollLeft += event.deltaY;
         };
         const addScrollListener = () => {
-            if (window.innerWidth >= 992) {
+            if (window.innerWidth >= 1400) {
                 element.addEventListener("wheel", handleScroll, { passive: false });
             } else {
                 element.removeEventListener("wheel", handleScroll);
