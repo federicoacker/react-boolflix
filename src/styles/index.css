@@ -115,6 +115,13 @@
   width:60px;
 }
 
+.btn {
+  border:none;
+}
+.btn:active{
+  border:none;
+}
+
 @media screen and (min-width: 992px) {
   .info-image-wrapper {
     max-width: 20%;

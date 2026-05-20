@@ -9,6 +9,13 @@ function ScrollingList({ data, loadingError, isLoaded }) {
     
 
     return (
+        <div className="d-flex align-items-center">
+        <button className="btn bg-transparent " onClick={() => {
+            const element = rowRef.current;
+            element.scrollLeft -= element.querySelector(".item-card").clientWidth + 1;
+        }}>
+            <i className="bi bi-arrow-left-circle-fill fs-1"></i>
+        </button>
         <div ref={rowRef} className="d-flex list-row g-1">
             {(!isLoaded && loadingError) && <h1>Errore nel caricamento</h1>}
             {(isLoaded) && data.map(({ id, title, original_language, original_title, vote_average, imageSrc, overview, media_type }) => (
@@ -22,7 +29,14 @@ function ScrollingList({ data, loadingError, isLoaded }) {
                 vote_average={vote_average}
                 imageSrc={imageSrc}
                 overview={overview}
-            />))}
+                />))}
+        </div>
+        <button className="btn bg-transparent" onClick={() => {
+            const element = rowRef.current;
+            element.scrollLeft += element.querySelector(".item-card").clientWidth + 1;
+        }}>
+            <i className="bi bi-arrow-right-circle-fill fs-1"></i>
+        </button>
         </div>
     )
 }
